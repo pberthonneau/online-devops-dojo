@@ -76,5 +76,5 @@ module.exports = app => {
       }
       return ret // Return the last result. Not very accurate, but will do.
     }
-  }
+  })
 }
