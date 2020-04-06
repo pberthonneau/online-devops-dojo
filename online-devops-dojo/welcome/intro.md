@@ -1,5 +1,3 @@
-## Welcome!
-
 Welcome to the **Online DevOps Dojo** Katacoda course.
 
 This course is made up of 4 open source modules.
