@@ -15,11 +15,10 @@ module.exports = app => {
     const comment = payload.comment
     const user = comment.user
     const commentBody = comment.body && comment.body.toLowerCase()
-    const isBot = user.type === 'Bot' // for a genuine user this would be 'User'
     const { owner, repo, number } = context.issue()
 
     // Let's not do anything if the comment was made by a bot
-    if (isBot) {
+    if (user.isBot()) {
       app.log('Skipping event triggered by bot: ' + user.login + ' (' + owner + '/' + repo + ').')
       return
     }
@@ -38,13 +37,13 @@ module.exports = app => {
 
     app.log('Comment on a pull request #' + number + ' in ' + owner + '/' + repo + ' repository...')
 
-    // Get the list of comments in this PR
+    // Count the number of existing comments from this bot in this PR.
     // Note that warning about deprecated number instead of issue_number could only be fixed with next major Probot release (10)
     // https://github.com/probot/probot/pull/926
     var issueComments = await context.github.issues.listComments({ owner, repo, number })
     var botComments = 0
     issueComments.data.forEach(function (comment) {
-      if (comment.user.type == 'Bot' && comment.user.login.startsWith(coachName)) {
+      if (comment.user.isBot() && comment.user.login.startsWith(coachName)) {
         botComments++
       }
     })
@@ -72,7 +71,7 @@ module.exports = app => {
           }
           else
           {
-            app.log('context.github.pullRequests undefined #' + number + ' in ' + owner + '/' + repo)
+            app.log('context.github.pullRequests undefined #' + number + ' in ' + owner + '/' + repo + '.')
           }
           break
         default:
