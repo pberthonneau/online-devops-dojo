@@ -91,6 +91,6 @@ module.exports = app => {
       }
     } else if (commentBody.match(/\/\s*hal/)){   // for the fun and troubleshoot
       return addComment("![Hal](" + halImage + ")\n Shh! Don't say anyone that I'm monitoring this thread. Version " + process.env.VERSION + ".")
-    } else commentIgnored
+    } else commentIgnored(-1)
   })
 }
