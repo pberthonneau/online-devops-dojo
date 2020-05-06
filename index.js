@@ -58,7 +58,7 @@ module.exports = app => {
     app.log('Found ' + botComments + ' comment' + ((botComments > 1) ? 's' : '') + ' by the bot ' + coachName + ' in this PR.')
 
     function commentIgnored(count) {
-      const counter = "9" // typeof count !== 'undefined' ? " ("+count+")" : ''
+      const counter = typeof count !== 'undefined' ? " ("+count+")" : ''
       app.log('Comment ignored' + counter + ': ' + comment.body)
       context.log('Comment ignored' + counter + ': ' + comment.body)
     }
@@ -75,14 +75,14 @@ module.exports = app => {
           return addComment("![Paulo](" + pauloImage + ")\n Sure! I looked at the changes, and Brenda wants us to not only have horses but also ponies. So, we need to add `pony` in addition to `horse`. Can you do that?")
         case 1:
           addComment('![Paulo](' + pauloImage + ')\n Looks good :+1: ! Merging this pull request.')
-          if ( context.github.pullRequests )
+          if ( context.github.pulls )
           {
-            return await context.github.pullRequests.merge({ owner, repo, number })
+            return await context.github.pulls.merge({ owner, repo, number })
           }
           else
           {
-            context.log('context.github.pullRequests undefined')
-            app.log('context.github.pullRequests undefined #' + number + ' in ' + owner + '/' + repo + '.')
+            context.log('context.github.pulls undefined')
+            app.log('context.github.pulls undefined #' + number + ' in ' + owner + '/' + repo + '.')
           }
           break
         default:
