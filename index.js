@@ -5,7 +5,7 @@
 // file, you can obtain one at http://mozilla.org/MPL/2.0/.
 
 const coachName = 'online-devops-dojo-coach'
-const pauloImage = 'https://raw.githubusercontent.com/dxc-technology/online-devops-dojo/raw/master/assets/online-devops-dojo/version-control/paulo.png'
+const pauloImage = 'https://raw.githubusercontent.com/dxc-technology/online-devops-dojo/master/assets/online-devops-dojo/version-control/paulo.png'
 const tinaImage = 'https://raw.githubusercontent.com/dxc-technology/online-devops-dojo/master/assets/online-devops-dojo/continuous-integration/tina.png'
 const halImage = 'https://raw.githubusercontent.com/dxc-technology/online-devops-dojo/master/assets/online-devops-dojo/shift-security-left/hal.png'
 
@@ -58,11 +58,11 @@ module.exports = app => {
     app.log('Found ' + botComments + ' comment' + ((botComments > 1) ? 's' : '') + ' by the bot ' + coachName + ' in this PR.')
 
     function commentIgnored(count) {
-      const counter = typeof count !== 'undefined' ? " ("+count+")" : ''
+      const counter = "9" // typeof count !== 'undefined' ? " ("+count+")" : ''
       app.log('Comment ignored' + counter + ': ' + comment.body)
       context.log('Comment ignored' + counter + ': ' + comment.body)
-
     }
+
     function addComment(msg) {
       const issuesComment = context.issue({ body: msg })
       return context.github.issues.createComment(issuesComment)
