@@ -6,11 +6,11 @@ name: Run Stale Bot on Issue Comments
 jobs:
   build:
     name: stale
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v2
       - name: stale
-        uses: gatsbyjs/stale@master
+        uses: action/stale@v3
         id: stale
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
