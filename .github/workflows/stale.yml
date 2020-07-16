@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: stale
-        uses: action/stale@v3
+        uses: actions/stale@v3
         id: stale
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
