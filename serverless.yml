@@ -5,7 +5,7 @@
 
 service: devops-dojo-robot
 
-frameworkVersion: ">=1.4.0 <2.0.0"
+frameworkVersion: "^2.1.0"
 
 provider:
   name: aws
