@@ -14,7 +14,7 @@ go to [about the DevOps Dojo](https://dxc-technology.github.io/about-devops-dojo
 
 See a [history of the changes](CHANGELOG.md) to the **Online DevOps Dojo**.
 
-## Files
+## Files description
 
 ### Training scenarios
 
@@ -35,10 +35,10 @@ training pages
 - [`package.json`](package.json): Node package dependencies
 - [`package-lock.json`](package-lock.json): Tested set of Node module dependencies
 
-### Continuous delivery
+### CI/CD
 
 - [`.github/workflows/upload_lambda.yml`](.github/workflows/upload_lambda.yml):
-  GitHub workflow triggered on repository pushes, which uploads the coach lambda function.
+  GitHub workflow triggered on repository pushes, which uploads the coach lambda function to AWS.
 - [`.github/workflows/upload_lambda_from_comment.yml`](.github/workflows/upload_lambda_from_comment.yml):
   Same upload as above but triggered by a comment `/deploy` (convenient to avoid void commit).
 - [`serverless.yml`](serverless.yml): Serverless deployment configuration file  
